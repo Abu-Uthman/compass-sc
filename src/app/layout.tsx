@@ -4,9 +4,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Compass SC - NDIS Support Coordination That Speaks Your Language',
+  title: 'Compass SC - NDIS Support Coordination for Melbourne',
   description:
-    'Helping Melbourne\'s CALD community navigate the NDIS with cultural understanding and genuine care.',
+    'Personalised support coordination to help all Melbourne NDIS participants get the most from their NDIS plan.',
 };
 
 export default function RootLayout({

@@ -9,32 +9,33 @@ const faqs = [
       'Yes. Support Coordination is funded through your NDIS plan. You don\'t pay us directly.',
   },
   {
-    question: 'Do you speak Somali or Arabic?',
-    answer: 'Yes. We offer support in English, Somali, and Arabic.',
+    question: 'Are you NDIS registered?',
+    answer: 'No. We are an unregistered provider. This means we can support self-managed and plan-managed participants. We maintain the same quality standards as registered providers.',
   },
   {
-    question: 'What if I already have an NDIS plan?',
+    question: 'Who can use your service?',
     answer:
-      'Great. We can start immediately — just contact us and we\'ll review your plan together.',
+      'Self-managed and plan-managed NDIS participants in Melbourne and surrounds.',
   },
   {
-    question: 'Can you help my family member?',
-    answer: 'Yes. We work with participants and their families/carers.',
-  },
-  {
-    question: 'What areas do you cover?',
+    question: 'What if I am agency-managed?',
     answer:
-      'We primarily serve Melbourne and surrounding suburbs. Contact us to confirm your area.',
+      'We may still be able to help you. Contact us and we can discuss your options including changing your plan management type.',
+  },
+  {
+    question: 'What does a Support Coordinator do?',
+    answer:
+      'We help you understand your plan, connect with providers, manage your budgets, and prepare for reviews.',
   },
   {
     question: 'How quickly can I get started?',
     answer:
-      'We aim to respond within 1 business day and can typically begin within the same week.',
+      'We respond within 1 business day and can typically begin within the same week.',
   },
   {
     question: 'What if I don\'t have an NDIS plan yet?',
     answer:
-      'We can help you understand the access process and point you toward the right first steps.',
+      'We can point you in the right direction to access the NDIS and start the process.',
   },
 ];
 

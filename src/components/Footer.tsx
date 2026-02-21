@@ -80,20 +80,12 @@ export default function Footer() {
 
           {/* Languages */}
           <div>
-            <h4 className="font-bold text-lg mb-4 text-[#D4A017]">We Speak</h4>
-            <div className="flex flex-wrap gap-2">
-              {SITE_CONFIG.languages.map((lang) => (
-                <span
-                  key={lang}
-                  className="px-3 py-1 rounded-md bg-white/10 text-xs font-medium"
-                >
-                  {lang}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6">
-              <p className="text-xs text-[#9ca3af]">Registered NDIS Provider</p>
-            </div>
+            <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Contact Info</h4>
+            <ul className="flex flex-col gap-3 text-sm text-[#d1d5db]">
+              <li className="text-xs text-[#9ca3af]">Unregistered NDIS provider</li>
+              <li className="text-xs text-[#9ca3af]">Serving Melbourne-wide</li>
+              <li className="text-xs text-[#9ca3af]">Working with self-managed & plan-managed participants</li>
+            </ul>
           </div>
         </div>
 

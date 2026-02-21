@@ -12,7 +12,7 @@ export default function ContactPage() {
             Get in <span className="text-primary">Touch</span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
-            Culturally sensitive NDIS support in your language. We are here to help Melbourne's Muslim, Somali, and CALD communities navigate their journey with confidence.
+            NDIS support coordination for all Melbourne participants. We are here to help you navigate your journey with confidence.
           </p>
           <div className="w-24 h-1.5 bg-accent mx-auto mt-8 rounded-full"></div>
         </div>

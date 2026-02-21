@@ -4,7 +4,9 @@ export const SITE_CONFIG = {
   phone: '0432 405 388',
   email: 'info@compasssc.com.au',
   location: 'Melbourne, VIC',
-  languages: ['English', 'Somali', 'Arabic'],
+  languages: ['English'],
+  eligibility: 'Self-managed and plan-managed NDIS participants',
+  registrationStatus: 'Unregistered NDIS provider',
 };
 
 export const NAV_LINKS = [
@@ -19,5 +21,5 @@ export const CONTACT_INFO = {
   phone: '0432 405 388',
   email: 'info@compasssc.com.au',
   location: 'Melbourne, VIC',
-  languages: ['English', 'Somali', 'Arabic'],
+  languages: ['English'],
 };

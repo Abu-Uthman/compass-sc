@@ -6,7 +6,7 @@ import CTABanner from '@/components/CTABanner';
 const mission = {
   title: 'Our Mission',
   text:
-    'To ensure no one in Melbourne\'s CALD community misses out on NDIS support because of language or cultural barriers.',
+    'To ensure no one in Melbourne misses out on NDIS support because of complex systems or lack of understanding.',
 };
 
 export default function AboutPage() {
@@ -16,7 +16,7 @@ export default function AboutPage() {
       <section className="w-full max-w-[960px] px-4 pt-16 pb-12 md:pt-24 md:pb-16 text-center mx-auto">
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Our Story</h1>
         <p className="text-xl text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
-          Bridging the gap for Melbourne's CALD communities, ensuring culture is never a barrier to care.
+          Bridging the gap for all Melbourne NDIS participants, ensuring access to quality support coordination for everyone.
         </p>
       </section>
 

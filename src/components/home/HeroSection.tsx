@@ -10,13 +10,13 @@ export default function HeroSection() {
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="text-xs font-bold uppercase tracking-wide">NDIS Registered Provider</span>
+              <span className="text-xs font-bold uppercase tracking-wide">NDIS Support Coordinator</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-black text-slate-900 leading-[1.15] tracking-tight">
-              NDIS Support Coordination That Speaks Your Language
+              NDIS Support Coordination for Melbourne Participants
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Culturally sensitive support for the Melbourne Muslim, Somali, and CALD communities. We help you navigate the NDIS with understanding, respect, and care.
+              Personalised, reliable support coordination to help you get the most from your NDIS plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
               <Link
@@ -50,8 +50,8 @@ export default function HeroSection() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-bold text-slate-900 text-sm">Community Focused</p>
-                      <p className="text-xs text-slate-500">Serving Melbourne's CALD community</p>
+                      <p className="font-bold text-slate-900 text-sm">Personalised Support</p>
+                      <p className="text-xs text-slate-500">Serving all Melbourne participants</p>
                     </div>
                   </div>
                 </div>

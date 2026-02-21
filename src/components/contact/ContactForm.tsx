@@ -9,7 +9,7 @@ export default function ContactForm() {
     fullName: '',
     phoneNumber: '',
     email: '',
-    preferredLanguage: 'English',
+    planManagementType: 'Not sure',
     isNDISParticipant: '',
     message: '',
   });
@@ -34,7 +34,6 @@ export default function ContactForm() {
     const newErrors: Record<string, string> = {};
     if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
     if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required';
-    if (!formData.preferredLanguage) newErrors.preferredLanguage = 'Please select a language';
     if (!formData.isNDISParticipant) newErrors.isNDISParticipant = 'Please select yes/no/not sure';
     if (!formData.message.trim()) newErrors.message = 'How can we help is required';
     return newErrors;
@@ -67,7 +66,7 @@ export default function ContactForm() {
         fullName: '',
         phoneNumber: '',
         email: '',
-        preferredLanguage: 'English',
+        planManagementType: 'Not sure',
         isNDISParticipant: '',
         message: '',
       });
@@ -164,32 +163,28 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="preferredLanguage" className="block text-sm font-semibold text-slate-900">
-            Preferred Language <span className="text-red-500">*</span>
+          <label htmlFor="planManagementType" className="block text-sm font-semibold text-slate-900">
+            Plan Management Type
           </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-              </svg>
-            </div>
-            <select
-              id="preferredLanguage"
-              name="preferredLanguage"
-              value={formData.preferredLanguage}
-              onChange={handleChange}
-              className="block w-full pl-10 rounded-lg border border-slate-200 bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm appearance-none"
-            >
-              <option>English</option>
-              <option>Somali</option>
-              <option>Arabic</option>
-              <option>Other</option>
-            </select>
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
+          <div className="space-y-3">
+            {[
+              { value: 'Self-managed', label: 'Self-managed' },
+              { value: 'Plan-managed', label: 'Plan-managed' },
+              { value: 'Agency-managed', label: 'Agency-managed' },
+              { value: 'Not sure', label: 'Not sure' },
+            ].map((option) => (
+              <label key={option.value} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <input
+                  name="planManagementType"
+                  type="radio"
+                  value={option.value}
+                  checked={formData.planManagementType === option.value}
+                  onChange={handleChange}
+                  className="w-5 h-5 text-primary border-gray-300 focus:ring-primary"
+                />
+                <span className="text-slate-700">{option.label}</span>
+              </label>
+            ))}
           </div>
         </div>
 

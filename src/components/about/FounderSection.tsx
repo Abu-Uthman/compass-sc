@@ -23,13 +23,10 @@ export default function FounderSection() {
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Awale's Journey</h2>
             <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
               <p>
-                I started my career as an IT professional, but my heart was always with my community. Living in Melbourne, I witnessed firsthand the struggles facing the Somali and Muslim communities when trying to navigate the NDIS.
+                I started my career in enterprise IT and healthcare systems, where I learned what it means to navigate complex bureaucracy. When I encountered people struggling to get the NDIS support they were entitled to — confused by the jargon, overwhelmed by the process — I decided to do something about it.
               </p>
               <p>
-                It wasn't just about paperwork; it was about language nuances, cultural understanding, and trust. Seeing elders and families miss out on crucial support simply because the system wasn't built for them inspired me to change careers.
-              </p>
-              <p>
-                I founded <span className="font-bold text-primary">Compass SC</span> to be that bridge. From an IT professional to a community advocate, my mission is to ensure that your background is never a barrier to the support you deserve.
+                I founded <span className="font-bold text-primary">Compass SC</span> to simplify the NDIS for Melbourne participants so they can focus on living their lives, not paperwork.
               </p>
             </div>
           </div>

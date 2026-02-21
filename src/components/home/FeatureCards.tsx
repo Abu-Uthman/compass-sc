@@ -3,11 +3,11 @@ export default function FeatureCards() {
     {
       icon: (
         <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
         </svg>
       ),
-      title: 'We Speak Your Language',
-      description: 'Communication is key. Our team offers support in Somali, Arabic, and English to ensure you are fully understood and can express your needs confidently.',
+      title: 'We Know the NDIS',
+      description: 'Navigating the NDIS is complex. We simplify it so you can focus on your goals.',
     },
     {
       icon: (
@@ -15,8 +15,8 @@ export default function FeatureCards() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      title: 'We Understand Your Culture',
-      description: 'A community-led approach that respects your values, traditions, and faith. We ensure your NDIS plan aligns with your lifestyle and cultural requirements.',
+      title: 'We Understand Your Needs',
+      description: 'Every participant is different. We take time to understand your situation and what matters to you.',
     },
     {
       icon: (
@@ -24,7 +24,7 @@ export default function FeatureCards() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
         </svg>
       ),
-      title: 'We Navigate the NDIS',
+      title: 'We Navigate the NDIS For You',
       description: 'Expert coordination to help you get the most out of your NDIS plan. We handle the paperwork and advocacy so you can focus on achieving your goals.',
     },
   ];

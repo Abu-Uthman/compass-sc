@@ -5,16 +5,15 @@ import Footer from '@/components/Footer';
 
 const services = [
   {
-    title: 'Support Coordination',
+    title: 'Support Coordination (Level 2)',
     description:
-      'Helping you navigate your NDIS plan — connecting to providers, managing your plan budget, and advocating for your needs. Funded under your NDIS Support Coordination budget.',
-    features: [
-      'Implement your NDIS plan',
-      'Connect with reliable service providers',
-      'Manage your plan budget effectively',
-      'Coordinate multiple supports',
-      'Regular plan reviews',
-    ],
+      'Help you understand and implement your NDIS plan, connect you to the right providers, and build your confidence to coordinate your own supports over time.',
+    details: {
+      who: 'Self-managed and plan-managed NDIS participants',
+      what: 'Read your plan together, identify funded supports, source and connect providers, liaise with NDIS on your behalf, prepare for plan reviews',
+      funding: 'Covered under your Support Coordination budget (line item 07_002_0106_8_3)',
+      note: 'As an unregistered provider, we can work with self-managed and plan-managed participants. If you are agency-managed, we can help you understand your options.',
+    },
     icon: (
       <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
@@ -22,33 +21,31 @@ const services = [
     ),
   },
   {
-    title: 'Specialist Support Coordination',
+    title: 'Plan Review Preparation',
     description:
-      'For participants with complex needs or in crisis. Higher-intensity, more hands-on coordination. Funded under Specialist Support Coordination budget.',
-    features: [
-      'High-intensity support coordination',
-      'Crisis support and intervention',
-      'Complex case management',
-      'Advocacy and representation',
-      'Collaboration with multiple stakeholders',
-    ],
+      'Helping you prepare for your NDIS plan review so you get the best outcome.',
+    details: {
+      who: 'All NDIS participants',
+      what: 'We document your progress, identify gaps, and help you articulate your goals clearly for the NDIA',
+      funding: 'Funded under your Support Coordination budget',
+      note: '',
+    },
     icon: (
       <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
     ),
   },
   {
-    title: 'Plan Management (Referral)',
+    title: 'Provider Connections',
     description:
-      'We don\'t provide plan management directly, but we\'ll connect you with trusted plan management partners who work with our community.',
-    features: [
-      'Connect you with trusted partners',
-      'Ensure your funding is handled with care',
-      'Efficient and transparent management',
-      'GST-compliant invoicing',
-      'Budget monitoring and advice',
-    ],
+      'We maintain a network of quality Melbourne providers across therapy, accommodation, community access, and more.',
+    details: {
+      who: 'All NDIS participants',
+      what: 'We find the right fit for your needs from our network of trusted providers',
+      funding: 'No additional cost - included in our coordination support',
+      note: '',
+    },
     icon: (
       <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -72,8 +69,7 @@ export default function ServicesPage() {
             Our Services
           </h1>
           <p className="max-w-2xl text-lg text-slate-600 sm:text-xl sm:leading-relaxed">
-            Culturally sensitive support coordination tailored to your unique journey and community needs.
-            We understand the nuances of the NDIS and your community.
+            Personalised support coordination to help you get the most from your NDIS plan.
           </p>
         </div>
       </section>
@@ -87,7 +83,7 @@ export default function ServicesPage() {
                 key={index}
                 title={service.title}
                 description={service.description}
-                features={service.features}
+                details={service.details}
                 icon={service.icon}
               />
             ))}
@@ -109,12 +105,13 @@ export default function ServicesPage() {
           <div className="grid gap-10 md:grid-cols-3">
             {[
               {
-                title: 'Cultural Understanding',
+                title: 'Reliability',
                 description:
-                  'We respect and understand your cultural background to provide truly personalized care that honors your values.',
+                  'You can count on us to be there when you need us. Consistent, dependable support you can trust.',
                 icon: (
                   <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 ),
               },

@@ -20,12 +20,20 @@ const ndisInfo = [
     description:
       'We act as your partner in the NDIS journey. Our job is to help you implement your plan and connect you with the right services.',
     points: [
-      'Finding culturally safe and trusted service providers',
+      'Finding trusted service providers',
       'Managing your budget and ensuring it lasts',
       'Advocating for your needs during plan reviews and meetings',
       'Providing immediate assistance if your circumstances change',
     ],
   },
+];
+
+const resources = [
+  { title: 'NDIS official website', url: 'https://www.ndis.gov.au' },
+  { title: 'NDIS myplace portal', url: 'https://my.ndis.gov.au' },
+  { title: 'NDIS Access Checklist', url: 'https://www.ndis.gov.au/applying-access-ndis/am-i-eligible' },
+  { title: 'Find a support coordinator', url: 'https://www.ndis.gov.au/participants/working-providers/find-registered-provider' },
+  { title: 'Disability Gateway', url: 'https://www.disabilitygateway.gov.au' },
 ];
 
 export default function NDISInfoPage() {
@@ -45,7 +53,7 @@ export default function NDISInfoPage() {
               Understanding the <span className="text-primary">NDIS</span>
             </h1>
             <p className="text-slate-600 text-lg lg:text-xl leading-relaxed max-w-xl">
-              We are dedicated to making the National Disability Insurance Scheme simple and accessible for our Muslim, Somali, and diverse communities across Melbourne.
+              We are dedicated to making the National Disability Insurance Scheme simple and accessible for all participants across Melbourne.
             </p>
           </div>
         </div>
@@ -88,6 +96,40 @@ export default function NDISInfoPage() {
       <HowToStart />
 
       <FAQAccordion />
+
+      {/* Useful Resources */}
+      <section className="w-full bg-[#FAFAF8] py-16 lg:py-24">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Useful Resources</h2>
+            <p className="text-slate-600">
+              Helpful links to learn more about the NDIS and find additional support.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            {resources.map((resource, index) => (
+              <a
+                key={index}
+                href={resource.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-6 bg-white rounded-xl border border-slate-200 hover:border-primary transition-colors group"
+              >
+                <span className="text-slate-700 font-medium group-hover:text-primary transition-colors">
+                  {resource.title}
+                </span>
+                <svg className="h-5 w-5 text-slate-400 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FAQAccordion />
+
+      <CTABanner />
     </div>
   );
 }
