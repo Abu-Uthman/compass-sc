@@ -1,179 +1,157 @@
-import Link from 'next/link';
-import Header from '../_components/Header';
-import Footer from '../_components/Footer';
+import HeroSection from '@/components/home/HeroSection';
+import ServiceCard from '@/components/services/ServiceCard';
+import CTABanner from '@/components/CTABanner';
+import Footer from '@/components/Footer';
+
+const services = [
+  {
+    title: 'Support Coordination',
+    description:
+      'Helping you navigate your NDIS plan — connecting to providers, managing your plan budget, and advocating for your needs. Funded under your NDIS Support Coordination budget.',
+    features: [
+      'Implement your NDIS plan',
+      'Connect with reliable service providers',
+      'Manage your plan budget effectively',
+      'Coordinate multiple supports',
+      'Regular plan reviews',
+    ],
+    icon: (
+      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Specialist Support Coordination',
+    description:
+      'For participants with complex needs or in crisis. Higher-intensity, more hands-on coordination. Funded under Specialist Support Coordination budget.',
+    features: [
+      'High-intensity support coordination',
+      'Crisis support and intervention',
+      'Complex case management',
+      'Advocacy and representation',
+      'Collaboration with multiple stakeholders',
+    ],
+    icon: (
+      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Plan Management (Referral)',
+    description:
+      'We don\'t provide plan management directly, but we\'ll connect you with trusted plan management partners who work with our community.',
+    features: [
+      'Connect you with trusted partners',
+      'Ensure your funding is handled with care',
+      'Efficient and transparent management',
+      'GST-compliant invoicing',
+      'Budget monitoring and advice',
+    ],
+    icon: (
+      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
+  },
+];
 
 export default function ServicesPage() {
-  const services = [
-    {
-      title: 'Support Coordination',
-      description:
-        'We help you understand your NDIS plan, connect with providers, and build your support network.',
-      features: [
-        'Implement your NDIS plan',
-        'Connect with reliable service providers',
-        'Build your support network',
-        'Coordinate multiple services',
-        'Regular plan reviews',
-      ],
-      price: 'Starting from $75/hour',
-    },
-    {
-      title: 'Specialist Support Coordination',
-      description:
-        'For participants with complex needs who require intensive support coordination.',
-      features: [
-        'High-intensity support coordination',
-        'Crisis support and intervention',
-        'Complex case management',
-        'Advocacy and representation',
-        'Collaboration with multiple stakeholders',
-      ],
-      price: 'Custom quote available',
-    },
-    {
-      title: 'Plan Management',
-      description:
-        'We manage your NDIS funding, process claims, and ensure your budget is used effectively.',
-      features: [
-        'Manage your NDIS budget',
-        'Process claims with service providers',
-        'Financial reporting and tracking',
-        'Budget monitoring and advice',
-        'GST-compliant invoicing',
-      ],
-      price: '5% of plan management budget',
-    },
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-
-      {/* Page Header */}
-      <section className="bg-gradient-to-br from-[#0D7A5F] to-[#1a9d7d] text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+    <div className="min-h-screen bg-[#FAFAF8]">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-[#FAFAF8] px-6 py-20">
+        <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center">
+          <div className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5">
+            <span className="text-xs font-bold uppercase tracking-wide text-primary">
+              Comprehensive Care
+            </span>
+          </div>
+          <h1 className="mb-6 text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
             Our Services
           </h1>
-          <p className="text-xl md:text-2xl text-green-100">
-            Comprehensive NDIS support coordination services tailored to your needs
+          <p className="max-w-2xl text-lg text-slate-600 sm:text-xl sm:leading-relaxed">
+            Culturally sensitive support coordination tailored to your unique journey and community needs.
+            We understand the nuances of the NDIS and your community.
           </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-3">
             {services.map((service, index) => (
-              <div
+              <ServiceCard
                 key={index}
-                className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition"
-              >
-                <div className="bg-[#0D7A5F] text-white p-6">
-                  <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-[#D4A017] font-semibold">{service.price}</p>
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                icon={service.icon}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work Together */}
+      <section className="bg-[#FAFAF8]/50 px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-black text-slate-900 sm:text-4xl">
+              How We Work Together
+            </h2>
+            <p className="mx-auto max-w-2xl text-slate-600">
+              Our approach is built on three core pillars designed to support your journey with respect and clarity.
+            </p>
+          </div>
+          <div className="grid gap-10 md:grid-cols-3">
+            {[
+              {
+                title: 'Cultural Understanding',
+                description:
+                  'We respect and understand your cultural background to provide truly personalized care that honors your values.',
+                icon: (
+                  <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Empowerment',
+                description:
+                  'We give you the tools, confidence, and knowledge to take control of your NDIS plan and your future.',
+                icon: (
+                  <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Transparent Communication',
+                description:
+                  'Clear, honest, and open communication every step of the way. No jargon, just straight talk.',
+                icon: (
+                  <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                  </svg>
+                ),
+              },
+            ].map((item, index) => (
+              <div key={index} className="flex flex-col items-center text-center">
+                <div className="mb-6 flex size-16 items-center justify-center rounded-full bg-white text-primary shadow-sm">
+                  {item.icon}
                 </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-                  <h4 className="font-semibold text-[#0D7A5F] mb-3">
-                    What's included:
-                  </h4>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <svg
-                          className="w-5 h-5 text-[#D4A017] mr-2 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-gray-50 p-6">
-                  <Link
-                    href="/contact"
-                    className="w-full block text-center bg-[#0D7A5F] text-white py-3 px-6 rounded-lg hover:bg-[#0c6650] transition font-semibold"
-                  >
-                    Contact Us for More Info
-                  </Link>
-                </div>
+                <h3 className="mb-3 text-xl font-bold text-slate-900">{item.title}</h3>
+                <p className="text-slate-600">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Eligibility Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D7A5F] mb-8 text-center">
-            Am I Eligible?
-          </h2>
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
-            <p className="text-gray-600 mb-6">
-              To be eligible for NDIS Support Coordination, you must:
-            </p>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <span className="w-6 h-6 rounded-full bg-[#0D7A5F] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-1">
-                  1
-                </span>
-                <span className="text-gray-700">
-                  Have a permanent and significant disability that affects your
-                  ability to function daily
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-6 h-6 rounded-full bg-[#0D7A5F] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-1">
-                  2
-                </span>
-                <span className="text-gray-700">
-                  Be under 65 years old when first accessing the NDIS
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-6 h-6 rounded-full bg-[#0D7A5F] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-1">
-                  3
-                </span>
-                <span className="text-gray-700">
-                  Be an Australian citizen, permanent resident, or special
-                  category visa holder
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-6 h-6 rounded-full bg-[#0D7A5F] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-1">
-                  4
-                </span>
-                <span className="text-gray-700">
-                  Require support coordination to help implement your NDIS plan
-                </span>
-              </li>
-            </ul>
-            <div className="mt-8 text-center">
-              <p className="text-gray-600 mb-4">Not sure if you're eligible?</p>
-              <Link
-                href="/contact"
-                className="inline-block bg-[#0D7A5F] text-white py-3 px-8 rounded-lg hover:bg-[#0c6650] transition font-semibold"
-              >
-                Contact Us for a Free Assessment
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
+      <CTABanner />
     </div>
   );
 }

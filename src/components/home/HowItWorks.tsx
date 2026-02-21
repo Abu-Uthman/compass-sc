@@ -1,0 +1,58 @@
+export default function HowItWorks() {
+  const steps = [
+    {
+      number: 1,
+      title: 'Free Consultation',
+      description: 'We meet to understand your needs and explain how we can help, obligation-free.',
+    },
+    {
+      number: 2,
+      title: 'Personalized Planning',
+      description: 'Together, we build a support plan that respects your culture and maximizes your budget.',
+    },
+    {
+      number: 3,
+      title: 'Ongoing Support',
+      description: 'We stay by your side, coordinating services and advocating for you as your needs evolve.',
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-[#FAFAF8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="w-full md:w-1/3">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">Your Journey With Us</h2>
+            <p className="text-slate-600 mb-8">
+              We've simplified the process to get you the support you need quickly. Here is how we work together to build your independence.
+            </p>
+            <a
+              href="/contact"
+              className="text-primary font-bold flex items-center hover:underline"
+            >
+              Start the process today
+              <svg className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+          <div className="w-full md:w-2/3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
+              {/* Connecting Line (Desktop) */}
+              <div className="hidden sm:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-slate-200 -z-0"></div>
+              {steps.map((step) => (
+                <div key={step.number} className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+                  <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                    {step.number}
+                  </div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h4>
+                  <p className="text-sm text-slate-600">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

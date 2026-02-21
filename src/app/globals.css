@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #0D7A5F;
+  --color-primaryDark: #095c47;
+  --color-accent: #D4A017;
+  --color-accentHover: #b88a14;
+  --color-background: #FAFAF8;
+  --color-textMain: #1A1A1A;
+  --color-textMuted: #6B7280;
+  --color-surface: #FFFFFF;
+}
+
+@layer base {
+  html {
+    font-family: 'Public Sans', sans-serif;
+  }
+  
+  body {
+    @apply bg-background text-textMain antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}

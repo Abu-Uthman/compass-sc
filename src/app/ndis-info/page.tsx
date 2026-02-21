@@ -1,235 +1,93 @@
-import Link from 'next/link';
-import Header from '../_components/Header';
-import Footer from '../_components/Footer';
+import HeroSection from '@/components/home/HeroSection';
+import FAQAccordion from '@/components/ndis-info/FAQAccordion';
+import EligibilityChecklist from '@/components/ndis-info/EligibilityChecklist';
+import HowToStart from '@/components/ndis-info/HowToStart';
+import CTABanner from '@/components/CTABanner';
 
-export default function NdisInfoPage() {
-  const faqs = [
-    {
-      question: 'What is an NDIS Support Coordinator?',
-      answer:
-        'A Support Coordinator helps you understand your NDIS plan, connect with service providers, and build your support network. They assist you to implement your plan and achieve your goals.',
-    },
-    {
-      question: 'How do I know if I need a Support Coordinator?',
-      answer:
-        'You may benefit from a Support Coordinator if you find it challenging to understand your NDIS plan, find and manage service providers, or coordinate multiple supports.',
-    },
-    {
-      question: 'What is the cost of Support Coordination?',
-      answer:
-        'Support Coordination is funded through your NDIS plan under the "Core" support category. There is no out-of-pocket cost if it is included in your plan. We can help you request this funding.',
-    },
-    {
-      question: 'How long does it take to get Support Coordination approved?',
-      answer:
-        'The approval process varies. We can help you request Support Coordination in your NDIS plan and work with the NDIA to get it approved based on your needs.',
-    },
-    {
-      question: 'Can I change Support Coordinators if I\'m not satisfied?',
-      answer:
-        'Yes, you have the right to change Support Coordinators at any time. If you\'re not satisfied with the service, you can contact us to discuss your concerns.',
-    },
-    {
-      question: 'What happens during a plan review?',
-      answer:
-        'During a plan review, we help you assess your progress, identify any changes in your needs, and prepare for your NDIA plan review meeting to ensure your plan continues to meet your goals.',
-    },
-  ];
+const ndisInfo = [
+  {
+    title: 'What is the NDIS?',
+    description:
+      'The National Disability Insurance Scheme (NDIS) is a way for the Australian government to support people with a permanent and significant disability. It is designed to give you more choice and control over the support you receive in your daily life.',
+    points: [
+      'Provides funding directly to you (or your nominee)',
+      'Allows you to choose the providers and services that best meet your needs',
+      'Focuses on helping you achieve your goals — employment, skills, independence',
+    ],
+  },
+  {
+    title: 'What does a Support Coordinator do?',
+    description:
+      'We act as your partner in the NDIS journey. Our job is to help you implement your plan and connect you with the right services.',
+    points: [
+      'Finding culturally safe and trusted service providers',
+      'Managing your budget and ensuring it lasts',
+      'Advocating for your needs during plan reviews and meetings',
+      'Providing immediate assistance if your circumstances change',
+    ],
+  },
+];
 
+export default function NDISInfoPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-
-      {/* Page Header */}
-      <section className="bg-gradient-to-br from-[#0D7A5F] to-[#1a9d7d] text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            NDIS Information
-          </h1>
-          <p className="text-xl md:text-2xl text-green-100">
-            Everything you need to know about the NDIS and Support Coordination
-          </p>
-        </div>
-      </section>
-
-      {/* What is NDIS */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D7A5F] mb-8">
-            What is the NDIS?
-          </h2>
-          <div className="prose prose-lg text-gray-600">
-            <p className="mb-6">
-              The <strong>National Disability Insurance Scheme (NDIS)</strong> is a
-              government program in Australia that provides support for people
-              with permanent and significant disability. It gives participants
-              choice and control over how their disability support funding is
-              used.
+    <div className="min-h-screen bg-[#FAFAF8]">
+      {/* Hero Section */}
+      <section className="relative w-full bg-[#fafbfc] px-6 py-16 lg:py-24 overflow-hidden">
+        <div className="mx-auto max-w-5xl flex flex-col md:flex-row items-center gap-12 relative z-10">
+          <div className="flex-1 flex flex-col gap-6 text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider w-fit">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              NDIS Education
+            </div>
+            <h1 className="text-slate-900 text-4xl lg:text-6xl font-black leading-tight tracking-tight">
+              Understanding the <span className="text-primary">NDIS</span>
+            </h1>
+            <p className="text-slate-600 text-lg lg:text-xl leading-relaxed max-w-xl">
+              We are dedicated to making the National Disability Insurance Scheme simple and accessible for our Muslim, Somali, and diverse communities across Melbourne.
             </p>
-            <p className="mb-6">
-              The NDIS aims to help people with disability achieve their goals,
-              including participation in community, employment, and independent
-              living. It provides funding for reasonable and necessary supports
-              that are related to your disability.
-            </p>
-            <div className="bg-gray-50 rounded-xl p-6 mt-8">
-              <h3 className="text-xl font-semibold text-[#0D7A5F] mb-4">
-                Key Principles of the NDIS
-              </h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <span className="w-5 h-5 rounded-full bg-[#D4A017] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
-                    ✓
-                  </span>
-                  <span>Early intervention approach</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-5 h-5 rounded-full bg-[#D4A017] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
-                    ✓
-                  </span>
-                  <span>Person-centered planning</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-5 h-5 rounded-full bg-[#D4A017] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
-                    ✓
-                  </span>
-                  <span>Funding for reasonable and necessary supports</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-5 h-5 rounded-full bg-[#D4A017] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
-                    ✓
-                  </span>
-                  <span>Choice and control for participants</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-5 h-5 rounded-full bg-[#D4A017] text-white flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
-                    ✓
-                  </span>
-                  <span>Long-term support and investment</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Eligibility */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D7A5F] mb-8">
-            Am I Eligible for the NDIS?
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-[#0D7A5F] mb-3">
-                Age Requirements
-              </h3>
-              <p className="text-gray-600">
-                You must be under 65 years old when you first apply to join the
-                NDIS. There is no age limit for existing participants.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-[#0D7A5F] mb-3">
-                Disability Requirements
-              </h3>
-              <p className="text-gray-600">
-                You must have a permanent and significant disability that
-                affects your ability to function daily. This includes
-                intellectual, cognitive, neurological, sensory, or physical
-                impairments.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-[#0D7A5F] mb-3">
-                Residency Requirements
-              </h3>
-              <p className="text-gray-600">
-                You must be an Australian citizen, permanent resident, or hold a
-                special category visa. Some temporary visa holders may also be
-                eligible under specific circumstances.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What is a Support Coordinator */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D7A5F] mb-8">
-            What Does a Support Coordinator Do?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-[#0D7A5F] rounded-xl p-6 text-white">
-              <h3 className="text-xl font-semibold mb-4">Implementation Support</h3>
-              <ul className="space-y-2 text-green-100">
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Understand your NDIS plan and goals</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Connect with service providers</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Coordinate multiple supports</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Build your support network</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-[#0D7A5F] rounded-xl p-6 text-white">
-              <h3 className="text-xl font-semibold mb-4">Coordination Support</h3>
-              <ul className="space-y-2 text-green-100">
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Manage service provider contracts</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Monitor support quality</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Resolve support issues</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-4 h-4 rounded-full border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center mr-2 text-xs mt-1">•</span>
-                  <span>Plan reviews and adjustments</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D7A5F] mb-8 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <details
-                key={index}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition"
-              >
-                <summary className="cursor-pointer font-semibold text-[#0D7A5F] text-xl mb-2">
-                  {faq.question}
-                </summary>
-                <p className="text-gray-600 mt-4">{faq.answer}</p>
-              </details>
+      {/* What is NDIS Section */}
+      <section className="w-full bg-white px-6 py-16 lg:py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="bg-white rounded-2xl border-2 border-primary/20 shadow-xl shadow-primary/5 p-8 lg:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full -mr-8 -mt-8"></div>
+            {ndisInfo.map((section, index) => (
+              <div key={index} className="mb-12">
+                <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {section.title}
+                </h2>
+                <p className="text-slate-700 text-lg leading-relaxed mb-6">{section.description}</p>
+                {section.points && (
+                  <ul className="space-y-3">
+                    {section.points.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <svg className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-slate-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <Footer />
+      <EligibilityChecklist />
+
+      <HowToStart />
+
+      <FAQAccordion />
     </div>
   );
 }
