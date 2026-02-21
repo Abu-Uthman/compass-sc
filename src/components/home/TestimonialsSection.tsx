@@ -1,19 +1,19 @@
 export default function TestimonialsSection() {
   const testimonials = [
     {
-      name: 'Fatima A.',
-      role: 'Melbourne Resident',
-      quote: "Compass SC made the NDIS easy for my family. They explained everything in a way we could understand and respected our home.",
+      name: 'Sarah M.',
+      role: 'Melbourne',
+      quote: "Compass SC helped us understand every part of my daughter's NDIS plan. We finally know what she's entitled to and how to use it.",
     },
     {
-      name: 'Ahmed M.',
-      role: 'Parent & Carer',
-      quote: "Finally, support workers who understand our culture. I don't have to explain why we do things certain ways, they just know.",
+      name: 'David K.',
+      role: 'Melbourne',
+      quote: "Navigating the NDIS alone was overwhelming. Compass SC broke it down into simple steps and connected me with the right providers quickly.",
     },
     {
-      name: 'Hassan Y.',
-      role: 'NDIS Participant',
-      quote: "Professional, kind, and always available to help. The team at Compass SC has been a blessing for my brother's care plan.",
+      name: 'Jenny R.',
+      role: 'Melbourne',
+      quote: "They prepared us thoroughly for our plan review. We came out with more funding and a clear support structure. Highly recommend.",
     },
   ];
 
@@ -25,16 +25,8 @@ export default function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-[#FAFAF8] p-8 rounded-2xl relative"
+              className="bg-[#FAFAF8] p-8 rounded-2xl"
             >
-              <svg
-                className="absolute top-6 right-6 text-4xl text-primary/20"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden flex items-center justify-center text-slate-400">
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">

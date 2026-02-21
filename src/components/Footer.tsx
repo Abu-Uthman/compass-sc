@@ -6,6 +6,15 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0D7A5F] text-white">
+      {/* Hidden address for SEO */}
+      <address className="hidden" style={{ display: 'none' }}>
+        <span itemProp="name">Compass SC</span>
+        <span itemProp="telephone">0432405388</span>
+        <span itemProp="email">info@compasssc.com.au</span>
+        <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+          <span itemProp="addressLocality">Melbourne</span>, <span itemProp="addressRegion">VIC</span>, <span itemProp="addressCountry">AU</span>
+        </span>
+      </address>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
@@ -17,7 +26,7 @@ export default function Footer() {
               <span className="text-xl font-bold">Compass SC</span>
             </div>
             <p className="text-[#fafbfc] text-sm leading-relaxed">
-              Culturally responsive NDIS Support Coordination for Melbourne's diverse communities.
+              Professional NDIS Support Coordination for Melbourne participants. Level 2 Support Coordination.
             </p>
             <div className="flex gap-4 mt-2">
               {['FB', 'IG', 'LI'].map((social) => (
@@ -58,10 +67,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>
-                  123 Community St,<br />
-                  Melbourne VIC 3000
-                </span>
+                <span>Melbourne, VIC (mobile service)</span>
               </li>
               <li className="flex items-center gap-3">
                 <svg className="h-5 w-5 text-[#D4A017]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,9 +84,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Languages */}
+          {/* Provider Details */}
           <div>
-            <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Contact Info</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Provider Details</h4>
             <ul className="flex flex-col gap-3 text-sm text-[#d1d5db]">
               <li className="text-xs text-[#9ca3af]">Unregistered NDIS provider</li>
               <li className="text-xs text-[#9ca3af]">Serving Melbourne-wide</li>

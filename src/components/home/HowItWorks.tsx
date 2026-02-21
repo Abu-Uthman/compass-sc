@@ -7,8 +7,8 @@ export default function HowItWorks() {
     },
     {
       number: 2,
-      title: 'Personalized Planning',
-      description: 'Together, we build a support plan that respects your culture and maximizes your budget.',
+      title: 'Personalised Planning',
+      description: 'Together, we build a support plan that respects your culture and maximises your budget.',
     },
     {
       number: 3,
@@ -38,17 +38,46 @@ export default function HowItWorks() {
           </div>
           <div className="w-full md:w-2/3">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
-              {/* Connecting Line (Desktop) */}
-              <div className="hidden sm:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-slate-200 -z-0"></div>
-              {steps.map((step) => (
-                <div key={step.number} className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
-                  <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                    {step.number}
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h4>
-                  <p className="text-sm text-slate-600">{step.description}</p>
+              {/* Step 1 */}
+              <div className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+                <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                  {steps[0].number}
                 </div>
-              ))}
+                <h4 className="text-lg font-bold text-slate-900 mb-2">{steps[0].title}</h4>
+                <p className="text-sm text-slate-600">{steps[0].description}</p>
+              </div>
+              
+              {/* Connector 1→2 */}
+              <div className="hidden sm:flex absolute top-8 left-[16%] items-center -translate-x-1/2">
+                <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+              
+              {/* Step 2 */}
+              <div className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+                <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                  {steps[1].number}
+                </div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">{steps[1].title}</h4>
+                <p className="text-sm text-slate-600">{steps[1].description}</p>
+              </div>
+              
+              {/* Connector 2→3 */}
+              <div className="hidden sm:flex absolute top-8 left-[50%] items-center -translate-x-1/2">
+                <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+              
+              {/* Step 3 */}
+              <div className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+                <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                  {steps[2].number}
+                </div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">{steps[2].title}</h4>
+                <p className="text-sm text-slate-600">{steps[2].description}</p>
+              </div>
             </div>
           </div>
         </div>

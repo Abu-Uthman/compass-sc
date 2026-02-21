@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import HeroSection from '@/components/home/HeroSection';
 import FAQAccordion from '@/components/ndis-info/FAQAccordion';
 import EligibilityChecklist from '@/components/ndis-info/EligibilityChecklist';
@@ -35,6 +36,11 @@ const resources = [
   { title: 'Find a support coordinator', url: 'https://www.ndis.gov.au/participants/working-providers/find-registered-provider' },
   { title: 'Disability Gateway', url: 'https://www.disabilitygateway.gov.au' },
 ];
+
+export const metadata: Metadata = {
+  title: 'NDIS Information Guide | Compass SC Melbourne',
+  description: 'Learn about the NDIS, eligibility requirements, and how support coordination can help you maximise your NDIS plan funding in Melbourne.',
+};
 
 export default function NDISInfoPage() {
   return (

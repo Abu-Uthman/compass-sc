@@ -2,8 +2,9 @@ export default function FeatureCards() {
   const features = [
     {
       icon: (
-        <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
+        <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
       ),
       title: 'We Know the NDIS',
@@ -11,8 +12,8 @@ export default function FeatureCards() {
     },
     {
       icon: (
-        <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
         </svg>
       ),
       title: 'We Understand Your Needs',
@@ -20,11 +21,12 @@ export default function FeatureCards() {
     },
     {
       icon: (
-        <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
+        <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
         </svg>
       ),
-      title: 'We Navigate the NDIS For You',
+      title: 'We Navigate the NDIS',
       description: 'Expert coordination to help you get the most out of your NDIS plan. We handle the paperwork and advocacy so you can focus on achieving your goals.',
     },
   ];
@@ -38,13 +40,13 @@ export default function FeatureCards() {
             We bridge the gap between complex NDIS systems and your personal needs with a deeply human approach.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
               className="bg-[#FAFAF8] p-8 rounded-xl border border-slate-100 hover:shadow-lg transition-shadow group"
             >
-              <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center text-primary mb-6 shadow-sm group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 bg-[#E8F5F1] rounded-full flex items-center justify-center text-[#0D7A5F] mb-6 shadow-sm group-hover:scale-110 transition-transform">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>

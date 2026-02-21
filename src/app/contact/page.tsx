@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import HeroSection from '@/components/home/HeroSection';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfoCard from '@/components/contact/ContactInfoCard';
+
+export const metadata: Metadata = {
+  title: 'Contact Us | Compass SC - NDIS Support Coordination Melbourne',
+  description: 'Contact Compass SC for professional NDIS support coordination in Melbourne. Call 0432 405 388 or email info@compasssc.com.au. Free consultation available.',
+};
 
 export default function ContactPage() {
   return (

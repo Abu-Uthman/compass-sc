@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#FAFAF8] pt-16 pb-24 lg:pt-32 lg:pb-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div className="flex flex-col gap-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary w-fit mx-auto lg:mx-0">
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -17,6 +17,9 @@ export default function HeroSection() {
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Personalised, reliable support coordination to help you get the most from your NDIS plan.
+            </p>
+            <p className="text-base text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Compass SC provides Level 2 NDIS Support Coordination for self-managed and plan-managed participants across Melbourne. Our service is funded through your NDIS plan — there is no out-of-pocket cost.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
               <Link
@@ -37,24 +40,28 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="relative lg:h-full flex items-center justify-center">
-            {/* Abstract blob background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent/10 rounded-full blur-3xl -z-10"></div>
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-900/5">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
-              <div className="absolute bottom-6 left-6 right-6 z-20">
-                <div className="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-primary/10 p-2 rounded-full text-primary">
-                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-900 text-sm">Personalised Support</p>
-                      <p className="text-xs text-slate-500">Serving all Melbourne participants</p>
-                    </div>
-                  </div>
-                </div>
+            {/* Teal card with compass and text */}
+            <div className="bg-[#0D7A5F] rounded-2xl p-8 shadow-xl w-full max-w-md">
+              <div className="flex flex-col items-center text-center">
+                {/* Compass Rose SVG */}
+                <svg className="h-20 w-20 text-white mb-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.5"/>
+                  {/* North arrow */}
+                  <path d="M50 10 L55 50 L50 45 L45 50 Z" fill="currentColor"/>
+                  {/* East arrow */}
+                  <path d="M90 50 L50 55 L45 50 L50 45 Z" fill="currentColor" opacity="0.7"/>
+                  {/* South arrow */}
+                  <path d="M50 90 L45 50 L50 55 L55 50 Z" fill="currentColor" opacity="0.5"/>
+                  {/* West arrow */}
+                  <path d="M10 50 L50 45 L55 50 L50 55 Z" fill="currentColor" opacity="0.7"/>
+                  <circle cx="50" cy="50" r="8" fill="currentColor"/>
+                </svg>
+                <h3 className="text-2xl font-bold text-white mb-3">Your NDIS Journey, Simplified</h3>
+                <p className="text-white/80 mb-6">Trusted support coordination for all Melbourne participants</p>
+                <span className="bg-[#E8F5F1] text-[#0D7A5F] px-4 py-2 rounded-full text-sm font-semibold">
+                  Level 2 Support Coordination
+                </span>
               </div>
             </div>
           </div>

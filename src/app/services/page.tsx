@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import HeroSection from '@/components/home/HeroSection';
 import ServiceCard from '@/components/services/ServiceCard';
 import CTABanner from '@/components/CTABanner';
@@ -57,6 +58,18 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
+      {/* Eligibility Notice */}
+      <section className="bg-white px-6 pt-8 pb-4">
+        <div className="mx-auto max-w-4xl">
+          <div className="border-l-4 border-[#0D7A5F] bg-[#E8F5F1] p-6 rounded-r-lg">
+            <h3 className="font-bold text-slate-900 mb-2">Who can use our services?</h3>
+            <p className="text-slate-600 text-sm">
+              We are an unregistered NDIS provider working with self-managed and plan-managed participants in Melbourne. Agency-managed participants — <Link href="/contact" className="text-primary font-semibold underline hover:text-primaryDark">contact us</Link> to discuss your options.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#FAFAF8] px-6 py-20">
         <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center">

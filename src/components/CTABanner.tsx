@@ -9,7 +9,7 @@ export default function CTABanner() {
           Ready to navigate your NDIS journey together?
         </h2>
         <p className="text-[#fafbfc] text-lg mb-8 max-w-2xl mx-auto">
-          Let's discuss how we can support you or your loved ones with a culturally safe and professional approach.
+          Whether you're new to the NDIS or looking for better support coordination, we're here to help. Self-managed and plan-managed participants welcome.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link

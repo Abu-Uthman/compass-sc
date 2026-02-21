@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import HeroSection from '@/components/home/HeroSection';
 import FounderSection from '@/components/about/FounderSection';
 import ValuesGrid from '@/components/about/ValuesGrid';
@@ -7,6 +8,11 @@ const mission = {
   title: 'Our Mission',
   text:
     'To ensure no one in Melbourne misses out on NDIS support because of complex systems or lack of understanding.',
+};
+
+export const metadata: Metadata = {
+  title: 'About Us | Compass SC - NDIS Support Coordination Melbourne',
+  description: 'Learn about Compass SC\'s mission to help Melbourne NDIS participants navigate their NDIS plans with professional Level 2 support coordination.',
 };
 
 export default function AboutPage() {
