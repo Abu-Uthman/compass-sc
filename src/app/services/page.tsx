@@ -1,8 +1,15 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import HeroSection from '@/components/home/HeroSection';
 import ServiceCard from '@/components/services/ServiceCard';
 import CTABanner from '@/components/CTABanner';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'NDIS Support Coordination Services Melbourne | Compass SC',
+  description: 'Level 2 NDIS Support Coordination services in Melbourne. We help self-managed and plan-managed participants navigate the NDIS and connect with quality providers.',
+  keywords: 'NDIS support coordination services Melbourne, Level 2 support coordinator Melbourne, NDIS plan implementation, provider connections Melbourne',
+};
 
 const services = [
   {
@@ -61,11 +68,9 @@ export default function ServicesPage() {
       {/* Eligibility Notice */}
       <section className="bg-white px-6 pt-8 pb-4">
         <div className="mx-auto max-w-4xl">
-          <div className="border-l-4 border-[#0D7A5F] bg-[#E8F5F1] p-6 rounded-r-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Who can use our services?</h3>
-            <p className="text-slate-600 text-sm">
-              We are an unregistered NDIS provider working with self-managed and plan-managed participants in Melbourne. Agency-managed participants — <Link href="/contact" className="text-primary font-semibold underline hover:text-primaryDark">contact us</Link> to discuss your options.
-            </p>
+          <div className="border-l-4 border-primary bg-primary/5 p-4 rounded-r-lg mb-8">
+            <p className="font-semibold text-primary">Who can access our services?</p>
+            <p className="text-gray-600 mt-1">We are an unregistered NDIS provider working with self-managed and plan-managed participants. Agency-managed participants — <Link href="/contact" className="text-primary underline">contact us</Link> to discuss your options.</p>
           </div>
         </div>
       </section>

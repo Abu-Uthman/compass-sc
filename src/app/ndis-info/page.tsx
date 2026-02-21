@@ -5,6 +5,12 @@ import EligibilityChecklist from '@/components/ndis-info/EligibilityChecklist';
 import HowToStart from '@/components/ndis-info/HowToStart';
 import CTABanner from '@/components/CTABanner';
 
+export const metadata: Metadata = {
+  title: 'Understanding the NDIS | Compass SC Melbourne',
+  description: 'Learn about the National Disability Insurance Scheme (NDIS). Get clear explanations of NDIS, support coordination, eligibility, and how to access services in Melbourne.',
+  keywords: 'NDIS explained, understanding NDIS, NDIS Melbourne, NDIS eligibility, what is NDIS, support coordinator Melbourne',
+};
+
 const ndisInfo = [
   {
     title: 'What is the NDIS?',
@@ -36,11 +42,6 @@ const resources = [
   { title: 'Find a support coordinator', url: 'https://www.ndis.gov.au/participants/working-providers/find-registered-provider' },
   { title: 'Disability Gateway', url: 'https://www.disabilitygateway.gov.au' },
 ];
-
-export const metadata: Metadata = {
-  title: 'NDIS Information Guide | Compass SC Melbourne',
-  description: 'Learn about the NDIS, eligibility requirements, and how support coordination can help you maximise your NDIS plan funding in Melbourne.',
-};
 
 export default function NDISInfoPage() {
   return (
@@ -134,6 +135,48 @@ export default function NDISInfoPage() {
       </section>
 
       <FAQAccordion />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the service free for me?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Support Coordination is funded through your NDIS plan. You don't pay us directly." }
+          },
+          {
+            "@type": "Question",
+            "name": "Are you NDIS registered?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. We are an unregistered provider. This means we can support self-managed and plan-managed participants. We maintain the same quality standards as registered providers." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who can use your service?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Self-managed and plan-managed NDIS participants in Melbourne and surrounds." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I am agency-managed?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We may still be able to help you. Contact us and we can discuss your options including changing your plan management type." }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a Support Coordinator do?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We help you understand your plan, connect with providers, manage your budgets, and prepare for reviews." }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly can I get started?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We respond within 1 business day and can typically begin within the same week." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I don't have an NDIS plan yet?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We can point you in the right direction to access the NDIS and start the process." }
+          }
+        ]
+      })}} />
 
       <CTABanner />
     </div>

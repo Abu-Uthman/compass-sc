@@ -61,7 +61,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Contact Us</h4>
-            <ul className="flex flex-col gap-3 text-sm text-[#d1d5db]">
+            <address className="flex flex-col gap-3 text-sm text-[#d1d5db] not-italic">
               <li className="flex items-start gap-3">
                 <svg className="h-5 w-5 text-[#D4A017] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -81,7 +81,7 @@ export default function Footer() {
                 </svg>
                 <span>{SITE_CONFIG.email}</span>
               </li>
-            </ul>
+            </address>
           </div>
 
           {/* Provider Details */}

@@ -4,15 +4,15 @@ import FounderSection from '@/components/about/FounderSection';
 import ValuesGrid from '@/components/about/ValuesGrid';
 import CTABanner from '@/components/CTABanner';
 
-const mission = {
-  title: 'Our Mission',
-  text:
-    'To ensure no one in Melbourne misses out on NDIS support because of complex systems or lack of understanding.',
+export const metadata: Metadata = {
+  title: 'About Compass SC | NDIS Support Coordinator Melbourne',
+  description: 'Learn about Compass SC - a professional Level 2 NDIS Support Coordination provider serving Melbourne participants. Our mission is to help you navigate the NDIS with confidence.',
+  keywords: 'About Compass SC, NDIS support coordinator Melbourne, NDIS provider Melbourne, Level 2 support coordination Melbourne',
 };
 
-export const metadata: Metadata = {
-  title: 'About Us | Compass SC - NDIS Support Coordination Melbourne',
-  description: 'Learn about Compass SC\'s mission to help Melbourne NDIS participants navigate their NDIS plans with professional Level 2 support coordination.',
+const mission = {
+  title: 'Our Mission',
+  text: 'To ensure no one in Melbourne misses out on NDIS support because of complex systems or lack of understanding.',
 };
 
 export default function AboutPage() {

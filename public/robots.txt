@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.compasssc.com.au/sitemap.xml
+Sitemap: https://compass-sc.vercel.app/sitemap.xml

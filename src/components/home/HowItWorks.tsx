@@ -37,41 +37,53 @@ export default function HowItWorks() {
             </a>
           </div>
           <div className="w-full md:w-2/3">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 relative">
               {/* Step 1 */}
-              <div className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+              <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left group">
                 <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
                   {steps[0].number}
+                </div>
+                {/* Mobile vertical connector */}
+                <div className="md:hidden absolute left-1/2 -bottom-6 transform -translate-x-1/2 text-primary">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 mb-2">{steps[0].title}</h4>
                 <p className="text-sm text-slate-600">{steps[0].description}</p>
               </div>
               
               {/* Connector 1→2 */}
-              <div className="hidden sm:flex absolute top-8 left-[16%] items-center -translate-x-1/2">
+              <div className="hidden md:flex absolute top-8 left-[16%] items-center -translate-x-1/2">
                 <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </div>
               
               {/* Step 2 */}
-              <div className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+              <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left group mt-8 md:mt-0">
                 <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
                   {steps[1].number}
+                </div>
+                {/* Mobile vertical connector */}
+                <div className="md:hidden absolute left-1/2 -bottom-6 transform -translate-x-1/2 text-primary">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 mb-2">{steps[1].title}</h4>
                 <p className="text-sm text-slate-600">{steps[1].description}</p>
               </div>
               
               {/* Connector 2→3 */}
-              <div className="hidden sm:flex absolute top-8 left-[50%] items-center -translate-x-1/2">
+              <div className="hidden md:flex absolute top-8 left-[50%] items-center -translate-x-1/2">
                 <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </div>
               
               {/* Step 3 */}
-              <div className="relative z-10 flex flex-col items-center text-center sm:items-start sm:text-left group">
+              <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left group mt-8 md:mt-0">
                 <div className="w-16 h-16 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center font-bold text-xl shadow-sm mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
                   {steps[2].number}
                 </div>

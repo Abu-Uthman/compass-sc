@@ -1,38 +1,11 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.compasssc.com.au';
-
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ndis-info`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-  ];
+    { url: 'https://compass-sc.vercel.app', lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
+    { url: 'https://compass-sc.vercel.app/services', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://compass-sc.vercel.app/ndis-info', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://compass-sc.vercel.app/about', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: 'https://compass-sc.vercel.app/contact', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+  ]
 }
