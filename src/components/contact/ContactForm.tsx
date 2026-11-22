@@ -1,73 +1,115 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { flushSync } from 'react-dom';
+
+import { sendEnquiry } from '@/app/contact/actions';
+import { SITE_CONFIG } from '@/lib/constants';
+import {
+  ENQUIRY_LIMITS,
+  NDIS_PARTICIPANT_OPTIONS,
+  PLAN_MANAGEMENT_OPTIONS,
+  normaliseEnquiry,
+  validateEnquiry,
+  type EnquiryErrors,
+} from '@/lib/enquiry';
+
+const initialForm = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  planManagementType: 'Not sure',
+  isNDISParticipant: '',
+  message: '',
+  // Spam trap: hidden from people, so it stays empty. See actions.ts.
+  hp_check: '',
+};
+
+const inputBorder = (message?: string) => (message ? 'border-red-300 focus:ring-red-500' : 'border-slate-200');
+
+/** Lets a screen reader read the message under a field together with the field. */
+const describedBy = (name: keyof EnquiryErrors, errors: EnquiryErrors) => ({
+  'aria-invalid': Boolean(errors[name]),
+  'aria-describedby': errors[name] ? `${name}-error` : undefined,
+});
+
+function FieldError({ name, message }: { name: string; message?: string }) {
+  if (!message) return null;
+  return <p id={`${name}-error`} className="text-red-500 text-xs mt-1">{message}</p>;
+}
+
+/** Moves the keyboard and the screen reader to the first field that needs fixing. */
+function focusFirstInvalid(form: HTMLFormElement | null, errors: EnquiryErrors) {
+  const first = Object.keys(errors)[0];
+  form?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
+}
+
+// The browser cuts off text beyond a field's maxLength without telling the visitor. So the phone
+// field allows more than the rule does, and the message field has no cut-off: the rule's own
+// message then tells the visitor what to fix.
+const PHONE_FIELD_MAX = 30;
+
+// True only in the browser, once the page's scripts are running. Until then the Send button is
+// off, so a visitor cannot "send" from a page that is not ready to send.
+const subscribeToNothing = () => () => {};
+const useScriptsReady = () => useSyncExternalStore(subscribeToNothing, () => true, () => false);
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    phoneNumber: '',
-    email: '',
-    planManagementType: 'Not sure',
-    isNDISParticipant: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(initialForm);
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<EnquiryErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const scriptsReady = useScriptsReady();
+  const formRef = useRef<HTMLFormElement>(null);
+  const sendButtonRef = useRef<HTMLButtonElement>(null);
+  const wasSubmitting = useRef(false);
+
+  useEffect(() => {
+    // The fields are locked while a message is sent, and a locked field drops the keyboard focus.
+    // When sending ends, put the focus back on the Send button.
+    if (wasSubmitting.current && !isSubmitting) sendButtonRef.current?.focus();
+    wasSubmitting.current = isSubmitting;
+  }, [isSubmitting]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
+    const field = name as keyof EnquiryErrors;
+    if (errors[field]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
-        delete newErrors[name];
+        delete newErrors[field];
         return newErrors;
       });
     }
   };
 
-  const validate = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required';
-    if (!formData.isNDISParticipant) newErrors.isNDISParticipant = 'Please select yes/no/not sure';
-    if (!formData.message.trim()) newErrors.message = 'How can we help is required';
-    return newErrors;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const validationErrors = validate();
+    if (isSubmitting) return;
+    setSubmitStatus('idle');
+    // The same rules run again on the server, so the form and the server always agree.
+    const enquiry = normaliseEnquiry(formData);
+    const validationErrors = validateEnquiry(enquiry);
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+      // Show the messages first, then move to the first wrong field, so it is read out with its message.
+      flushSync(() => setErrors(validationErrors));
+      focusFirstInvalid(formRef.current, validationErrors);
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      
-      // In production, this would be:
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
-
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+      const result = await sendEnquiry({ ...enquiry, hp_check: formData.hp_check });
+      if (!result.ok) {
+        setSubmitStatus('error');
+        return;
+      }
       setSubmitStatus('success');
-      setFormData({
-        fullName: '',
-        phoneNumber: '',
-        email: '',
-        planManagementType: 'Not sure',
-        isNDISParticipant: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Form submission error:', error);
+      setFormData(initialForm);
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -79,7 +121,25 @@ export default function ContactForm() {
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
       
-      <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+      {/* method="post" keeps what was typed out of the page address if the scripts fail to load */}
+      <form ref={formRef} method="post" onSubmit={handleSubmit} className="relative z-10">
+        <noscript>
+          <p className="mb-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-sm">
+            This form needs JavaScript to send your message. Please call us on {SITE_CONFIG.phone} or email {SITE_CONFIG.email}.
+          </p>
+        </noscript>
+        {/* While a message is being sent the fields are locked, so a late change cannot be lost */}
+        <fieldset disabled={isSubmitting} className="space-y-6 min-w-0">
+        <input
+          type="text"
+          name="hp_check"
+          value={formData.hp_check}
+          onChange={handleChange}
+          className="hidden"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label htmlFor="fullName" className="block text-sm font-semibold text-slate-900">
@@ -97,15 +157,13 @@ export default function ContactForm() {
                 type="text"
                 value={formData.fullName}
                 onChange={handleChange}
-                className={`block w-full pl-10 rounded-lg border ${
-                  errors.fullName ? 'border-red-300 focus:ring-red-500' : 'border-slate-200'
-                } bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm`}
+                maxLength={ENQUIRY_LIMITS.fullName}
+                {...describedBy('fullName', errors)}
+                className={`block w-full pl-10 rounded-lg border ${inputBorder(errors.fullName)} bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm`}
                 placeholder="Enter your full name"
               />
             </div>
-            {errors.fullName && (
-              <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
-            )}
+            <FieldError name="fullName" message={errors.fullName} />
           </div>
 
           <div className="space-y-2">
@@ -124,15 +182,13 @@ export default function ContactForm() {
                 type="tel"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className={`block w-full pl-10 rounded-lg border ${
-                  errors.phoneNumber ? 'border-red-300 focus:ring-red-500' : 'border-slate-200'
-                } bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm`}
+                maxLength={PHONE_FIELD_MAX}
+                {...describedBy('phoneNumber', errors)}
+                className={`block w-full pl-10 rounded-lg border ${inputBorder(errors.phoneNumber)} bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm`}
                 placeholder="04XX XXX XXX"
               />
             </div>
-            {errors.phoneNumber && (
-              <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
-            )}
+            <FieldError name="phoneNumber" message={errors.phoneNumber} />
           </div>
         </div>
 
@@ -152,44 +208,47 @@ export default function ContactForm() {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="block w-full pl-10 rounded-lg border border-slate-200 bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm"
+              maxLength={ENQUIRY_LIMITS.email}
+              {...describedBy('email', errors)}
+              className={`block w-full pl-10 rounded-lg border ${inputBorder(errors.email)} bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 shadow-sm sm:text-sm`}
               placeholder="you@example.com"
             />
           </div>
+          <FieldError name="email" message={errors.email} />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="planManagementType" className="block text-sm font-semibold text-slate-900">
+          <span id="planManagementType-label" className="block text-sm font-semibold text-slate-900">
             Plan Management Type
-          </label>
-          <div className="space-y-3">
-            {[
-              { value: 'NDIA-managed', label: 'NDIA-managed' },
-              { value: 'Plan-managed', label: 'Plan-managed' },
-              { value: 'Self-managed', label: 'Self-managed' },
-              { value: 'Not sure', label: 'Not sure' },
-            ].map((option) => (
-              <label key={option.value} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-slate-50 transition-colors">
+          </span>
+          <div role="radiogroup" aria-labelledby="planManagementType-label" className="space-y-3">
+            {PLAN_MANAGEMENT_OPTIONS.map((option) => (
+              <label key={option} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-slate-50 transition-colors">
                 <input
                   name="planManagementType"
                   type="radio"
-                  value={option.value}
-                  checked={formData.planManagementType === option.value}
+                  value={option}
+                  checked={formData.planManagementType === option}
                   onChange={handleChange}
                   className="w-5 h-5 text-primary border-gray-300 focus:ring-primary"
                 />
-                <span className="text-slate-700">{option.label}</span>
+                <span className="text-slate-700">{option}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="space-y-3 pt-2">
-          <span className="block text-sm font-semibold text-slate-900">
+          <span id="isNDISParticipant-label" className="block text-sm font-semibold text-slate-900">
             Are you an NDIS participant? <span className="text-red-500">*</span>
           </span>
-          <div className="flex flex-wrap gap-6">
-            {['Yes', 'No', 'Not sure'].map((option) => (
+          <div
+            role="radiogroup"
+            aria-labelledby="isNDISParticipant-label"
+            {...describedBy('isNDISParticipant', errors)}
+            className="flex flex-wrap gap-6"
+          >
+            {NDIS_PARTICIPANT_OPTIONS.map((option) => (
               <label key={option} className="inline-flex items-center cursor-pointer">
                 <input
                   name="isNDISParticipant"
@@ -203,9 +262,7 @@ export default function ContactForm() {
               </label>
             ))}
           </div>
-          {errors.isNDISParticipant && (
-            <p className="text-red-500 text-xs mt-1">{errors.isNDISParticipant}</p>
-          )}
+          <FieldError name="isNDISParticipant" message={errors.isNDISParticipant} />
         </div>
 
         <div className="space-y-2">
@@ -218,20 +275,18 @@ export default function ContactForm() {
             rows={4}
             value={formData.message}
             onChange={handleChange}
-            className={`block w-full rounded-lg border ${
-              errors.message ? 'border-red-300 focus:ring-red-500' : 'border-slate-200'
-            } bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 px-4 shadow-sm sm:text-sm resize-none`}
+            {...describedBy('message', errors)}
+            className={`block w-full rounded-lg border ${inputBorder(errors.message)} bg-slate-50 text-slate-900 focus:ring-primary focus:border-primary py-3 px-4 shadow-sm sm:text-sm resize-none`}
             placeholder="Tell us a bit about your needs..."
           ></textarea>
-          {errors.message && (
-            <p className="text-red-500 text-xs mt-1">{errors.message}</p>
-          )}
+          <FieldError name="message" message={errors.message} />
         </div>
 
         <div className="pt-2">
           <button
+            ref={sendButtonRef}
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !scriptsReady}
             className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primaryDark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
@@ -246,17 +301,24 @@ export default function ContactForm() {
               'Send Message'
             )}
           </button>
+          <p className="mt-2 text-xs text-slate-500">
+            Your details are sent to Compass SC by email so we can reply to you. Please do not put private health details in this form.
+          </p>
         </div>
+        </fieldset>
 
-        {submitStatus === 'success' && (
-          <div className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-center">
-            <p className="font-semibold">Thank you! We&apos;ll be in touch shortly.</p>
-            <p className="text-sm">Our team will respond within 1 business day.</p>
-          </div>
-        )}
+        {/* This region is always on the page, so screen readers announce the message when it appears */}
+        <div role="status">
+          {submitStatus === 'success' && (
+            <div className="mt-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-center">
+              <p className="font-semibold">Thank you! We&apos;ll be in touch shortly.</p>
+              <p className="text-sm">Our team will respond within 1 business day.</p>
+            </div>
+          )}
+        </div>
         {submitStatus === 'error' && (
-          <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-center">
-            <p>Something went wrong. Please try again or call us directly.</p>
+          <div role="alert" className="mt-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-center">
+            <p>Sorry, your message could not be sent. Please call us on {SITE_CONFIG.phone} or email {SITE_CONFIG.email}.</p>
           </div>
         )}
       </form>
