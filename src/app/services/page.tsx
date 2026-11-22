@@ -1,13 +1,12 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
-import HeroSection from '@/components/home/HeroSection';
 import ServiceCard from '@/components/services/ServiceCard';
 import CTABanner from '@/components/CTABanner';
-import Footer from '@/components/Footer';
+
+import { PROVIDER, SITE_CONFIG } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'NDIS Support Coordination Services Melbourne | Compass SC',
-  description: 'Level 2 NDIS Support Coordination services in Melbourne. We help self-managed and plan-managed participants navigate the NDIS and connect with quality providers.',
+  description: 'Level 2 NDIS Support Coordination services in Melbourne. We help NDIA-managed, plan-managed and self-managed participants navigate the NDIS and connect with quality providers.',
   keywords: 'NDIS support coordination services Melbourne, Level 2 support coordinator Melbourne, NDIS plan implementation, provider connections Melbourne',
 };
 
@@ -17,10 +16,10 @@ const services = [
     description:
       'Help you understand and implement your NDIS plan, connect you to the right providers, and build your confidence to coordinate your own supports over time.',
     details: {
-      who: 'Self-managed and plan-managed NDIS participants',
+      who: SITE_CONFIG.eligibility,
       what: 'Read your plan together, identify funded supports, source and connect providers, liaise with NDIS on your behalf, prepare for plan reviews',
       funding: 'Covered under your Support Coordination budget (line item 07_002_0106_8_3)',
-      note: 'As an unregistered provider, we can work with self-managed and plan-managed participants. If you are agency-managed, we can help you understand your options.',
+      note: `This service is provided by ${PROVIDER.legalName}, a registered NDIS provider. Participants with NDIA-managed, plan-managed or self-managed funding can use it.`,
     },
     icon: (
       <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,16 +64,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
-      {/* Eligibility Notice */}
-      <section className="bg-white px-6 pt-8 pb-4">
-        <div className="mx-auto max-w-4xl">
-          <div className="border-l-4 border-primary bg-primary/5 p-4 rounded-r-lg mb-8">
-            <p className="font-semibold text-primary">Who can access our services?</p>
-            <p className="text-gray-600 mt-1">We are an unregistered NDIS provider working with self-managed and plan-managed participants. Agency-managed participants — <Link href="/contact" className="text-primary underline">contact us</Link> to discuss your options.</p>
-          </div>
-        </div>
-      </section>
-
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#FAFAF8] px-6 py-20">
         <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center">
@@ -89,6 +78,44 @@ export default function ServicesPage() {
           <p className="max-w-2xl text-lg text-slate-600 sm:text-xl sm:leading-relaxed">
             Personalised support coordination to help you get the most from your NDIS plan.
           </p>
+        </div>
+      </section>
+
+      {/* Who provides the service */}
+      <section className="bg-white px-6 pt-8 pb-4">
+        <div className="mx-auto max-w-4xl">
+          <div className="border-l-4 border-primary bg-primary/5 p-4 rounded-r-lg mb-8 space-y-4">
+            <div>
+              <h2 className="font-semibold text-primary">Who provides your service?</h2>
+              <p className="text-gray-600 mt-1">
+                Compass SC is the name of this support coordination service. The registered NDIS provider behind it is {PROVIDER.legalName} (ABN {PROVIDER.abn}, registration number {PROVIDER.registrationNumber}). {PROVIDER.legalName} signs your service agreement, makes all claims, and is responsible for your supports and any complaints. You can check the registration on the <a href={PROVIDER.registerUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline">NDIS Commission&apos;s provider register</a> by searching for the name or the ABN.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-primary">Who can use this service?</h2>
+              <p className="text-gray-600 mt-1">
+                Participants with NDIA-managed, plan-managed or self-managed funding can all use this service.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-primary">A conflict of interest we tell you about</h2>
+              <p className="text-gray-600 mt-1">
+                {PROVIDER.legalName} also provides other NDIS supports, such as support workers. You are free to choose any provider for your other supports. If you ask us to suggest providers, we give you at least three options where possible, and a written conflict-of-interest declaration.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-primary">How to choose us</h2>
+              <p className="text-gray-600 mt-1">
+                Contact us first, and we explain the steps for your plan. In most cases you then tell your NDIA planner or your NDIS contact that you want {PROVIDER.legalName} (ABN {PROVIDER.abn}) as your support coordinator, and the NDIA sends a request for service.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-primary">Complaints</h2>
+              <p className="text-gray-600 mt-1">
+                If you are not happy with the service, please tell us. You can also complain to {PROVIDER.legalName}, or to the NDIS Quality and Safeguards Commission on 1800 035 544 or at ndiscommission.gov.au.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

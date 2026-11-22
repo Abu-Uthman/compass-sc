@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { PROVIDER } from '@/lib/constants';
+
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#FAFAF8] pt-16 pb-24 lg:pt-32 lg:pb-40">
@@ -19,7 +21,7 @@ export default function HeroSection() {
               Personalised, reliable support coordination to help you get the most from your NDIS plan.
             </p>
             <p className="text-base text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Compass SC provides Level 2 NDIS Support Coordination for self-managed and plan-managed participants across Melbourne. Our service is funded through your NDIS plan — there is no out-of-pocket cost.
+              Compass SC offers Level 2 NDIS Support Coordination across Melbourne, in English and Somali. The service is provided by {PROVIDER.legalName}, a registered NDIS provider, for NDIA-managed, plan-managed and self-managed participants. Our service is funded through your NDIS plan — there is no out-of-pocket cost.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
               <Link

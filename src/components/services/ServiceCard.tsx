@@ -26,7 +26,7 @@ export default function ServiceCard({
       
       <div className="mt-auto space-y-3">
         <div className="text-sm">
-          <p className="text-xs font-semibold uppercase text-slate-500 mb-1">Who it's for:</p>
+          <p className="text-xs font-semibold uppercase text-slate-500 mb-1">Who it&apos;s for:</p>
           <p className="text-slate-700">{details.who}</p>
         </div>
         <div className="text-sm">

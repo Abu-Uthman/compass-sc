@@ -20,7 +20,7 @@ export default function FounderSection() {
               <span className="h-px w-8 bg-accent"></span>
               <span className="text-accent font-bold uppercase tracking-widest text-xs">Meet The Founder</span>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Awale's Journey</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">Awale&apos;s Journey</h2>
             <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
               <p>
                 I started my career in enterprise IT and healthcare systems, where I learned what it means to navigate complex bureaucracy. When I encountered people struggling to get the NDIS support they were entitled to — confused by the jargon, overwhelmed by the process — I decided to do something about it.

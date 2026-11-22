@@ -3,14 +3,18 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+import { PROVIDER, PROVIDER_LINE } from '@/lib/constants';
+
+const description = `Level 2 NDIS Support Coordination for Melbourne participants, in English and Somali. Provided by ${PROVIDER.legalName}, a registered NDIS provider. NDIA-managed, plan-managed and self-managed participants welcome.`;
+
 export const metadata: Metadata = {
   title: 'Compass SC | NDIS Support Coordination Melbourne',
-  description: 'Professional Level 2 NDIS Support Coordination for Melbourne participants. Self-managed and plan-managed welcome. Get help understanding your plan, connecting with providers, and maximising your NDIS funding.',
-  keywords: 'NDIS support coordination, NDIS Melbourne, Level 2 support coordinator, NDIS plan management, NDIS participant support, Melbourne NDIS provider',
+  description: `${description} Get help understanding your plan, connecting with providers, and maximising your NDIS funding.`,
+  keywords: 'NDIS support coordination, NDIS Melbourne, Level 2 support coordinator, NDIS participant support, NDIS support coordination Melbourne',
   authors: [{ name: 'Compass SC' }],
   openGraph: {
     title: 'Compass SC | NDIS Support Coordination Melbourne',
-    description: 'Professional Level 2 NDIS Support Coordination for Melbourne participants. Self-managed and plan-managed welcome.',
+    description,
     url: 'https://www.compasssc.com.au',
     siteName: 'Compass SC',
     locale: 'en_AU',
@@ -31,6 +35,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Compass SC',
+    description: PROVIDER_LINE,
+    knowsLanguage: ['en', 'so'],
     telephone: '+61432405388',
     email: 'info@compasssc.com.au',
     address: {
@@ -43,7 +49,18 @@ export default function RootLayout({
       '@type': 'City',
       name: 'Melbourne',
     },
-    serviceType: 'NDIS Support Coordination',
+    makesOffer: {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        serviceType: 'NDIS Support Coordination',
+        provider: {
+          '@type': 'Organization',
+          name: PROVIDER.legalName,
+          taxID: PROVIDER.abn,
+        },
+      },
+    },
     priceRange: '$$',
   };
 
@@ -56,7 +73,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
         />
       </head>
       <body className="antialiased min-h-screen flex flex-col font-sans">

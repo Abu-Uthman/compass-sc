@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import HeroSection from '@/components/home/HeroSection';
 import FAQAccordion from '@/components/ndis-info/FAQAccordion';
 import EligibilityChecklist from '@/components/ndis-info/EligibilityChecklist';
 import HowToStart from '@/components/ndis-info/HowToStart';
 import CTABanner from '@/components/CTABanner';
+
+import { faqs } from '@/lib/faqs';
 
 export const metadata: Metadata = {
   title: 'Understanding the NDIS | Compass SC Melbourne',
@@ -134,49 +135,15 @@ export default function NDISInfoPage() {
         </div>
       </section>
 
-      <FAQAccordion />
-
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is the service free for me?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Support Coordination is funded through your NDIS plan. You don't pay us directly." }
-          },
-          {
-            "@type": "Question",
-            "name": "Are you NDIS registered?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. We are an unregistered provider. This means we can support self-managed and plan-managed participants. We maintain the same quality standards as registered providers." }
-          },
-          {
-            "@type": "Question",
-            "name": "Who can use your service?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Self-managed and plan-managed NDIS participants in Melbourne and surrounds." }
-          },
-          {
-            "@type": "Question",
-            "name": "What if I am agency-managed?",
-            "acceptedAnswer": { "@type": "Answer", "text": "We may still be able to help you. Contact us and we can discuss your options including changing your plan management type." }
-          },
-          {
-            "@type": "Question",
-            "name": "What does a Support Coordinator do?",
-            "acceptedAnswer": { "@type": "Answer", "text": "We help you understand your plan, connect with providers, manage your budgets, and prepare for reviews." }
-          },
-          {
-            "@type": "Question",
-            "name": "How quickly can I get started?",
-            "acceptedAnswer": { "@type": "Answer", "text": "We respond within 1 business day and can typically begin within the same week." }
-          },
-          {
-            "@type": "Question",
-            "name": "What if I don't have an NDIS plan yet?",
-            "acceptedAnswer": { "@type": "Answer", "text": "We can point you in the right direction to access the NDIS and start the process." }
-          }
-        ]
-      })}} />
+        "mainEntity": faqs.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        }))
+      }).replace(/</g, '\\u003c') }} />
 
       <CTABanner />
     </div>

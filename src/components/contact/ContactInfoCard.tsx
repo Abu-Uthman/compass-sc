@@ -1,3 +1,5 @@
+import { SITE_CONFIG } from '@/lib/constants';
+
 export default function ContactInfoCard() {
   return (
     <div className="flex flex-col gap-6">
@@ -67,15 +69,11 @@ export default function ContactInfoCard() {
         <div>
           <h3 className="font-bold text-slate-900 mb-1">Languages Spoken</h3>
           <div className="flex flex-wrap gap-2 mt-2">
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-700">
-              English
-            </span>
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-700">
-              Somali
-            </span>
-            <span className="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-700">
-              Arabic
-            </span>
+            {SITE_CONFIG.languages.map((language) => (
+              <span key={language} className="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-700">
+                {language}
+              </span>
+            ))}
           </div>
         </div>
       </div>

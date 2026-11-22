@@ -1,17 +1,16 @@
 import type { Metadata } from 'next';
-import HeroSection from '@/components/home/HeroSection';
 import FounderSection from '@/components/about/FounderSection';
 import ValuesGrid from '@/components/about/ValuesGrid';
-import CTABanner from '@/components/CTABanner';
+
+import { PROVIDER } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'About Compass SC | NDIS Support Coordinator Melbourne',
-  description: 'Learn about Compass SC - a professional Level 2 NDIS Support Coordination provider serving Melbourne participants. Our mission is to help you navigate the NDIS with confidence.',
-  keywords: 'About Compass SC, NDIS support coordinator Melbourne, NDIS provider Melbourne, Level 2 support coordination Melbourne',
+  description: `Compass SC - Level 2 NDIS Support Coordination for Melbourne participants, provided by ${PROVIDER.legalName}, a registered NDIS provider.`,
+  keywords: 'About Compass SC, NDIS support coordinator Melbourne, Level 2 support coordination Melbourne',
 };
 
 const mission = {
-  title: 'Our Mission',
   text: 'To ensure no one in Melbourne misses out on NDIS support because of complex systems or lack of understanding.',
 };
 
@@ -35,7 +34,7 @@ export default function AboutPage() {
             <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C20.6729 16 22.017 14.6559 22.017 13V6C22.017 4.34406 20.6729 3 19.017 3H15.017C13.3611 3 12.017 4.34406 12.017 6V8M12.017 21L12.017 15M6.0166 21L6.0166 18C6.0166 16.8954 6.91203 16 8.0166 16H11.0166C12.6725 16 14.0166 14.6559 14.0166 13V6C14.0166 4.34406 12.6725 3 11.0166 3H7.0166C5.36072 3 4.0166 4.34406 4.0166 6V13C4.0166 14.6559 5.36072 16 7.0166 16H7.5166" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight md:leading-snug">
-            "{mission.text}"
+            &quot;{mission.text}&quot;
           </h2>
           <div className="mt-8 w-16 h-1 bg-accent mx-auto rounded-full"></div>
         </div>
@@ -51,7 +50,7 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-14 gap-8">
             <div className="flex flex-col gap-2 text-center md:text-left">
               <h2 className="text-3xl font-bold text-slate-900">Ready to work together?</h2>
-              <p className="text-slate-600 text-lg">Let's build a support plan that truly understands you.</p>
+              <p className="text-slate-600 text-lg">Let&apos;s build a support plan that truly understands you.</p>
             </div>
             <a
               href="/contact"

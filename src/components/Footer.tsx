@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE_CONFIG, NAV_LINKS } from '@/lib/constants';
+import { SITE_CONFIG, NAV_LINKS, PROVIDER, PROVIDER_LINE } from '@/lib/constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="bg-[#0D7A5F] text-white">
       {/* Hidden address for SEO */}
       <address className="hidden" style={{ display: 'none' }}>
-        <span itemProp="name">Compass SC</span>
+        <span itemProp="name">{SITE_CONFIG.name}</span>
         <span itemProp="telephone">0432405388</span>
         <span itemProp="email">info@compasssc.com.au</span>
         <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
@@ -23,10 +23,10 @@ export default function Footer() {
               <svg className="h-8 w-8 text-[#D4A017]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" />
               </svg>
-              <span className="text-xl font-bold">Compass SC</span>
+              <span className="text-xl font-bold">{SITE_CONFIG.name}</span>
             </div>
             <p className="text-[#fafbfc] text-sm leading-relaxed">
-              Professional NDIS Support Coordination for Melbourne participants. Level 2 Support Coordination.
+              Professional NDIS Support Coordination for Melbourne participants. Level 2 Support Coordination. {PROVIDER_LINE}
             </p>
             <div className="flex gap-4 mt-2">
               {['FB', 'IG', 'LI'].map((social) => (
@@ -61,13 +61,14 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Contact Us</h4>
-            <address className="flex flex-col gap-3 text-sm text-[#d1d5db] not-italic">
+            <address className="text-sm text-[#d1d5db] not-italic">
+              <ul className="flex flex-col gap-3">
               <li className="flex items-start gap-3">
                 <svg className="h-5 w-5 text-[#D4A017] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Melbourne, VIC (mobile service)</span>
+                <span>{SITE_CONFIG.location} (mobile service)</span>
               </li>
               <li className="flex items-center gap-3">
                 <svg className="h-5 w-5 text-[#D4A017]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,22 +82,25 @@ export default function Footer() {
                 </svg>
                 <span>{SITE_CONFIG.email}</span>
               </li>
+              </ul>
             </address>
           </div>
 
           {/* Provider Details */}
           <div>
-            <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Provider Details</h4>
-            <ul className="flex flex-col gap-3 text-sm text-[#d1d5db]">
-              <li className="text-xs text-[#9ca3af]">Unregistered NDIS provider</li>
-              <li className="text-xs text-[#9ca3af]">Serving Melbourne-wide</li>
-              <li className="text-xs text-[#9ca3af]">Working with self-managed & plan-managed participants</li>
+            <h4 className="font-bold text-lg mb-4 text-[#D4A017]">Who Provides the Service</h4>
+            <ul className="flex flex-col gap-3 text-sm text-[#fafbfc]">
+              <li>
+                Service provided by {PROVIDER.legalName}, a registered NDIS provider (ABN {PROVIDER.abn}, registration number {PROVIDER.registrationNumber})
+              </li>
+              <li>Serving Melbourne-wide</li>
+              <li>NDIA-managed, plan-managed and self-managed participants</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9ca3af]">
-          <p>&copy; {currentYear} Compass Support Coordination. All rights reserved.</p>
+          <p>&copy; {currentYear} Compass SC. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
