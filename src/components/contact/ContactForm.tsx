@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 
-const resending = false;
-
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -50,8 +48,6 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      // Log to console for now (will integrate with Resend API)
-      console.log('Form submitted:', formData);
       
       // In production, this would be:
       // const response = await fetch('/api/contact', {
@@ -168,9 +164,9 @@ export default function ContactForm() {
           </label>
           <div className="space-y-3">
             {[
-              { value: 'Self-managed', label: 'Self-managed' },
+              { value: 'NDIA-managed', label: 'NDIA-managed' },
               { value: 'Plan-managed', label: 'Plan-managed' },
-              { value: 'Agency-managed', label: 'Agency-managed' },
+              { value: 'Self-managed', label: 'Self-managed' },
               { value: 'Not sure', label: 'Not sure' },
             ].map((option) => (
               <label key={option.value} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-slate-50 transition-colors">
@@ -193,7 +189,7 @@ export default function ContactForm() {
             Are you an NDIS participant? <span className="text-red-500">*</span>
           </span>
           <div className="flex flex-wrap gap-6">
-            {['Yes', 'No', 'Not Sure'].map((option) => (
+            {['Yes', 'No', 'Not sure'].map((option) => (
               <label key={option} className="inline-flex items-center cursor-pointer">
                 <input
                   name="isNDISParticipant"
@@ -254,7 +250,7 @@ export default function ContactForm() {
 
         {submitStatus === 'success' && (
           <div className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-center">
-            <p className="font-semibold">Thank you! We'll be in touch shortly.</p>
+            <p className="font-semibold">Thank you! We&apos;ll be in touch shortly.</p>
             <p className="text-sm">Our team will respond within 1 business day.</p>
           </div>
         )}

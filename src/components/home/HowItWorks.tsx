@@ -24,7 +24,7 @@ export default function HowItWorks() {
           <div className="w-full md:w-1/3">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Your Journey With Us</h2>
             <p className="text-slate-600 mb-8">
-              We've simplified the process to get you the support you need quickly. Here is how we work together to build your independence.
+              We&apos;ve simplified the process to get you the support you need quickly. Here is how we work together to build your independence.
             </p>
             <a
               href="/contact"

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import HeroSection from '@/components/home/HeroSection';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfoCard from '@/components/contact/ContactInfoCard';
 
